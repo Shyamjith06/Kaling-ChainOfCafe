@@ -10,7 +10,8 @@ on:
         required: true
         type: string
     outputs:
-      child_output: ${{ jobs.demojob.outputs.demo }}
+      child_output:
+        value: ${{ jobs.demojob.outputs.demo }}
 
 jobs:
   demojob:
