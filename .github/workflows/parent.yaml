@@ -18,7 +18,7 @@ jobs:
       env: ${{ inputs.env }}
       app: ${{ inputs.app }}
   job2:
-    nends: job1
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: output 
