@@ -31,7 +31,7 @@ jobs:
       - name: produce output
         id: step1
         run:
-          echo "demo=this is from child workflow" >> GITHUB_OUTPUT        
+          echo "demo=this is from child workflow" >> $GITHUB_OUTPUT        
       - name: maven clean
         run: |
           cd ${{ github.workspace }}/kalingachainofcafe
