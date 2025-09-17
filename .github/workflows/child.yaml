@@ -46,7 +46,7 @@ jobs:
 
       - name: print env
         run: |
-          echo "${{ github.event.inputs.env }}"
+          echo "${{ inputs.env }}"
 
       - name: print child output
         run: echo "${{ steps.step1.outputs.demo1 }}"
