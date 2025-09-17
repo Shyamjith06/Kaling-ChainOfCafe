@@ -1,6 +1,6 @@
 name: cache
 on:
-  push
+  workflow_dispatch
 jobs:
   cachejob:
     runs-on: ubuntu-latest

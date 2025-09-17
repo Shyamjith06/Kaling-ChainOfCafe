@@ -1,0 +1,37 @@
+name: child workflow
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: true
+        type: string 
+      app:
+        required: true
+        type: string
+    outputs:
+      child_output: ${{ jobs.demojob.outputs.demo }}
+
+jobs:
+  demojob:
+    runs-on: ubuntu-latest
+    outputs:
+      demo: ${{ steps.step1.outputs.demo }}
+    steps:
+      - name: chekout repo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: produce output
+        id: step1
+        run:
+          echo "demo=this is from child workflow" > GITHUB_OUTPUT        
+      - name: maven clean
+        run: |
+          cd ${{ github.workspace }}/kalingachainofcafe
+          mvn clean install
