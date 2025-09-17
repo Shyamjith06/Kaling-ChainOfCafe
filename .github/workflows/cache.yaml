@@ -20,7 +20,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-maven-${{ hashFiles('kalingachainofcafe/pom.xml') }}
+
       - name: maven clean
         run: |
           cd ${{ github.workspace }}/kalingachainofcafe
