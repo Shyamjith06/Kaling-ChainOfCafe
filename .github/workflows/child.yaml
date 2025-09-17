@@ -36,3 +36,6 @@ jobs:
         run: |
           cd ${{ github.workspace }}/kalingachainofcafe
           mvn clean install
+
+      - name: print child output
+        run: echo "${{ steps.step1.outputs.demo }}"
