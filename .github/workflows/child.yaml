@@ -45,8 +45,7 @@ jobs:
           mvn clean install
 
       - name: print env
-        run: |
-          echo "${{ inputs.env }}"
+        run: echo "Env is: ${{ inputs.env }}"
 
       - name: print child output
         run: echo "${{ steps.step1.outputs.demo1 }}"
