@@ -31,7 +31,14 @@ jobs:
       - name: produce output
         id: step1
         run:
-          echo "demo=this is from child workflow" >> $GITHUB_OUTPUT        
+          echo "demo=environment is ${{ input.env }}" >> $GITHUB_OUTPUT  
+
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('kalingachainofcafe/pom.xml') }}
+
       - name: maven clean
         run: |
           cd ${{ github.workspace }}/kalingachainofcafe
