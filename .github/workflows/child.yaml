@@ -30,7 +30,7 @@ jobs:
           java-version: '17'
       - name: produce output
         id: step1
-        run:
+        run: |
           echo "demo1=environment is ${{ inputs.env }}" >> $GITHUB_OUTPUT  
 
       - name: cache
