@@ -24,3 +24,6 @@ jobs:
       - name: output 
         run: |
           echo "${{ needs.job1.outputs.child_output }}"
+
+      - name: print env var
+        run: echo "${{ inputs.env }}"

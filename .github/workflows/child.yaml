@@ -33,16 +33,16 @@ jobs:
         run: |
           echo "demo1=environment is ${{ inputs.env }}" >> $GITHUB_OUTPUT  
 
-      - name: cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('kalingachainofcafe/pom.xml') }}
+      # - name: cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.m2/repository
+      #     key: ${{ runner.os }}-maven-${{ hashFiles('kalingachainofcafe/pom.xml') }}
 
-      - name: maven clean
-        run: |
-          cd ${{ github.workspace }}/kalingachainofcafe
-          mvn clean install
+      # - name: maven clean
+      #   run: |
+      #     cd ${{ github.workspace }}/kalingachainofcafe
+      #     mvn clean install
 
       - name: print env
         run: |
