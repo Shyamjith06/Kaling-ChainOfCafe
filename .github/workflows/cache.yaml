@@ -1,0 +1,27 @@
+name: cache
+on:
+  push
+jobs:
+  cachejob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17
+      
+      - name: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os}}-maven-${{ hashFiles('**/pom.xml') }}
+      - name: maven clean
+        run: |
+          cd ${{ github.workspace }}/kalingachainofcafe
+          mvn clean install
