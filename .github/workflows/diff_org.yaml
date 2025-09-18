@@ -10,7 +10,7 @@ on:
       app:
         required: true
         type: string
-        default: test
+        default: tes
 jobs:
   job1:
     uses: AbhishekPattnaik04/reusable-test/.github/workflows/cache.yaml@main
