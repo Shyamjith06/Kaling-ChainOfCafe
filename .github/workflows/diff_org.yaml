@@ -1,6 +1,6 @@
 name: diff org
 on:
-  push:
+  #push:
   workflow_dispatch:
     inputs:
       env:
