@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: output
-        run: echo "${{ input.env }}"
+        run: echo "${{ inputs.env }}"
