@@ -1,6 +1,6 @@
 name: sample workflow
 on:
-  #push:
+  push:
   workflow_dispatch:
     inputs:
       env:
@@ -14,7 +14,7 @@ on:
 
 jobs:
   sample:
-    runs-on: ubuntu-latest
+    runs-on: [dev, self-hosted]
     steps:
       - name: output
         run: echo "${{ inputs.env }}"
