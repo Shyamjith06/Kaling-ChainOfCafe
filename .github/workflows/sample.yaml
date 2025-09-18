@@ -14,7 +14,7 @@ on:
 
 jobs:
   sample:
-    runs-on: [dev, self-hosted]
+    runs-on: codebuild-demo2-${{ github.run_id }}-${{ github.run_attempt }} 
     steps:
       - name: output
         run: echo "${{ inputs.env }}"
