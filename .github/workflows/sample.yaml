@@ -1,6 +1,6 @@
 name: sample workflow
 on:
-  push:
+  #push:
   workflow_dispatch:
     inputs:
       env:
