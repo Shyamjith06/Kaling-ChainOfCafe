@@ -11,10 +11,7 @@ on:
         required: true
         type: string
         default: test
-strategy:
-  matrix:
-    os_version: [windows-latest, ubuntu-latest]
-    environment: ["prod", "qa"]
+
 jobs:
   job1:
     uses: ./.github/workflows/child.yaml
@@ -24,6 +21,10 @@ jobs:
   job2:
     needs: job1
     runs-on: ${{ matrix.os_version }}
+    strategy:
+      matrix:
+        os_version: [windows-latest, ubuntu-latest]
+        environment: ["prod", "qa"]
     steps:
       - name: output 
         run: |
