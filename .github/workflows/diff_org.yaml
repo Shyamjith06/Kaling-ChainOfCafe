@@ -13,7 +13,7 @@ on:
         default: test
 jobs:
   job1:
-    uses: abhishekpattnaik04/reusable-test/.github/workflows/cache.yaml@main
+    uses: AbhishekPattnaik04/reusable-test/.github/workflows/cache.yaml@main
     with:
       env: ${{ inputs.env }}
       app: ${{ inputs.app }}
