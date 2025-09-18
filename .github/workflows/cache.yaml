@@ -1,6 +1,10 @@
 name: cache
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  workflow_run:
+    workflows: [sample workflow]
+    types:
+      - completed 
 jobs:
   cachejob:
     runs-on: ubuntu-latest
@@ -22,7 +26,7 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('kalingachainofcafe/pom.xml') }}
 
-      - name: maven clean
-        run: |
-          cd ${{ github.workspace }}/kalingachainofcafe
-          mvn clean install
+      # - name: maven clean
+      #   run: |
+      #     cd ${{ github.workspace }}/kalingachainofcafe
+      #     mvn clean install

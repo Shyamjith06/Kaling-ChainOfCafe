@@ -1,0 +1,19 @@
+name: sample workflow
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      env:
+        required: true
+        type: string
+        default: dev
+      app:
+        required: true
+        type: string
+        default: test
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output
+        run: echo "${{ input.env }}"
