@@ -11,6 +11,9 @@ on:
         required: true
         type: string
         default: test
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
 jobs:
   sample:
     runs-on: ubuntu-latest
