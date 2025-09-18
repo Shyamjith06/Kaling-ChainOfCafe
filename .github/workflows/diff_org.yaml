@@ -1,0 +1,28 @@
+name: parent workflow
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      env:
+        required: true
+        type: string
+        default: dev
+      app:
+        required: true
+        type: string
+        default: test
+jobs:
+  job1:
+    uses: abhishekpattnaik04/reusable-test/.github/workflows/cache.yaml@main
+    with:
+      env: ${{ inputs.env }}
+      app: ${{ inputs.app }}
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: output 
+        run: |
+          echo "${{ needs.job1.outputs.child_output }}"
+
+ 
