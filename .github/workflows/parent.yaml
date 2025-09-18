@@ -11,6 +11,10 @@ on:
         required: true
         type: string
         default: test
+strategy:
+  matrix:
+    os_version: [windows-latest, ubuntu-latest]
+    environment: ["prod", "qa"]
 jobs:
   job1:
     uses: ./.github/workflows/child.yaml
@@ -19,10 +23,13 @@ jobs:
       app: ${{ inputs.app }}
   job2:
     needs: job1
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os_version }}
     steps:
       - name: output 
         run: |
           echo "${{ needs.job1.outputs.child_output }}"
+      
+      - name: print env 
+        run: echo "${{ matrix.environment }}"
 
  
