@@ -25,3 +25,4 @@ jobs:
 
       - name: Run Snyk scan
         run: snyk test --all-projects
+        working-directory: kalingachainofcafe
