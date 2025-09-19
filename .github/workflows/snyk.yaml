@@ -1,8 +1,9 @@
 name: Snyk PR Scan
 
 on:
+  push:
   workflow_dispatch:
-  pull_request:   # scans every PR regardless of branch
+  pull_request:
     branches:
       - '**'
 
@@ -12,18 +13,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node (required for Snyk CLI)
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      
+
       - name: Set up Maven
         run: mvn -version
+
       - name: Install Snyk
         run: npm install -g snyk
 
@@ -31,6 +34,5 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk scan
-        run: |
-          cd kalingachainofcafe
-          snyk test --file=pom.xml --maven
+        working-directory: kalingachainofcafe
+        run: snyk test --file=pom.xml --maven --no-wrapper
