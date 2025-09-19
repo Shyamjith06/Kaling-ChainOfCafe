@@ -33,4 +33,4 @@ jobs:
       - name: Run Snyk scan
         run: |
           cd kalingachainofcafe
-          snyk test --all-projects
+          snyk test --file=pom.xml --maven
