@@ -1,6 +1,7 @@
 name: Snyk PR Scan
 
 on:
+  workflow_dispatch:
   pull_request:   # scans every PR regardless of branch
     branches:
       - '**'
