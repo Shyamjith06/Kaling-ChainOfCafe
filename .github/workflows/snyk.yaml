@@ -16,7 +16,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      
+      - name: Set up Maven
+        run: mvn -version
       - name: Install Snyk
         run: npm install -g snyk
 
