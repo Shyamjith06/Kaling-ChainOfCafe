@@ -24,5 +24,6 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk scan
-        run: snyk test --all-projects
-        working-directory: kalingachainofcafe
+        run: |
+          cd kalingachainofcafe
+          snyk test --all-projects
